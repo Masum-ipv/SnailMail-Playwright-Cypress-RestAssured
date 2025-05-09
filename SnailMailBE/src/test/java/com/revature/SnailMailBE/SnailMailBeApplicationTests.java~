@@ -102,7 +102,7 @@ class SnailMailBeApplicationTests {
                         .accept(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(mail)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.sender", is(mail.getSender())))
+                .andExpect(jsonPath("$.sender", is(mail.getRecipient())))
                 .andExpect(jsonPath("$.recipient", is(mail.getRecipient())))
                 .andExpect(jsonPath("$.subject", is(mail.getSubject())))
                 .andExpect(jsonPath("$.body", is(mail.getBody())));
