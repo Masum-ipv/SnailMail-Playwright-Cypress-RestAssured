@@ -1,0 +1,17 @@
+package com.revature.SnailMailBE.services;
+
+import com.revature.SnailMailBE.models.User;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    public User getUser() {
+        //Instantiate the User to send back (hardcoded)
+        User u = new User(
+                "SnailMailGuy123",
+                "me@snailmail.com",
+                "password",
+                "user");
+        return u;
+    }
+}

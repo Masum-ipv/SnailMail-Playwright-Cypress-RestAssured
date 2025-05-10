@@ -21,7 +21,6 @@ public class UserController {
     public ResponseEntity<User> getUserInfo() {
 
         User u = userService.getUser();
-        System.out.println("User: " + u);
         //Return the user object
         return ResponseEntity.ok().body(u);
     }
