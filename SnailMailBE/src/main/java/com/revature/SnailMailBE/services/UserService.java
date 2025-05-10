@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     //Instantiate the User to send back (hardcoded)
     User user = new User(
-            "SnailMailGuy123",
+            "SnailMailGuy",
             "me@snailmail.com",
             "password",
             "user");

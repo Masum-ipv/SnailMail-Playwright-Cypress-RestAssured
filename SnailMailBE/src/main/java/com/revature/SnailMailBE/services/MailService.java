@@ -16,9 +16,9 @@ public class MailService {
         //Imagine we sent a request to the database to get this info
         List<Mail> inbox = List.of(
                 new Mail("snail@snailmail.com", "Hey", "me@snailmail.com", "I am a snail"),
-                new Mail("snail@snailmail.com", "Hey", "me@snailmail.com", "I have a shell"),
-                new Mail("slug@snailmail.com", "Hey", "me@snailmail.com", "I am a slug"),
-                new Mail("clam@snailmail.com", "Hey", "me@snailmail.com", "...")
+                new Mail("snail@snailmail.com", "Hello", "me@snailmail.com", "I have a shell"),
+                new Mail("slug@snailmail.com", "Good Morning", "me@snailmail.com", "I am a slug"),
+                new Mail("clam@snailmail.com", "Good Afternoon", "me@snailmail.com", "I am a clam")
         );
 
         //Imagine we either get a list of mail or an empty list

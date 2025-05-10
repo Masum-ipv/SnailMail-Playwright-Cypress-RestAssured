@@ -44,11 +44,11 @@ public class UserController {
 
     //IRL, maybe there would just be a single method to handle any user value updates
 
-    @PostMapping()
+    @PutMapping()
     public ResponseEntity<?> updateUserInfo(@RequestBody User user) {
         System.out.println("Request body user: " + user);
-        if (user.getUsername().length() < 5) {
-            return ResponseEntity.status(400).body("Username must be at least 5 characters");
+        if (user.getUsername().length() < 5 || user.getEmail().length() < 5) {
+            return ResponseEntity.status(400).body("Username and email must be at least 5 characters long");
         }
         return ResponseEntity.ok().body(userService.updateUser(user));
     }
