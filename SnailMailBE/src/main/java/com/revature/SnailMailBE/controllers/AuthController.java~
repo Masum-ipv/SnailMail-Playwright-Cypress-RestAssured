@@ -1,7 +1,6 @@
 package com.revature.SnailMailBE.controllers;
 
 import com.revature.SnailMailBE.models.User;
-import com.revature.SnailMailBE.models.UserDTO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +13,14 @@ public class AuthController {
     //Login - POST request to /auth/login
     //ResponseEntity<?> means we can send any type of data back
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserDTO incomingUser, HttpSession session) {
-        System.out.println("Login attempt: " + incomingUser);
+    public ResponseEntity<?> login(@RequestBody User incomingUser, HttpSession session){
 
         //NOTE the HttpSession object in the param.
         //We can initialize it and store user info in it after successful login
 
         //try to log in (HARDCODED)
-        if (incomingUser.getUsername().equals("username")
-                && incomingUser.getPassword().equals("password")) {
+        if(incomingUser.getUsername().equals("username")
+        && incomingUser.getPassword().equals("password")){
 
             //Imagine we checked the DB and found this user
             //Create a new session, and store user info in it for easy access
