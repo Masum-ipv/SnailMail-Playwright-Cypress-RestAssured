@@ -3,11 +3,14 @@ import { test, expect } from "@playwright/test";
 test.beforeEach(async ({ page }) => {
   // Navigate to the application before each test.
   await page.goto("http://localhost:5173");
+  await page.getByRole("textbox", { name: "Username" }).fill("username");
+  await page.getByRole("textbox", { name: "Password" }).fill("password");
+  await page.getByRole("button", { name: "Login" }).click();
 });
 
 test("01. Should load the inbox mails", async ({ page }) => {
   await expect(page.locator(".table-hover")).toBeVisible();
-  await expect(page).toHaveTitle("Vite + React + TS");
+  await expect(page).toHaveTitle("Snail Mail");
 });
 
 test("02. Load the inbox mails from the API", async ({ request }) => {
@@ -32,15 +35,15 @@ test("04. Negative test: Check the error message when the API is down", async ({
   page,
 }) => {
   // Modyfy API response empty array
-  await page.route("http://localhost:8080/mail", (route) => {
+  await page.route("**/mail", (route) => {
     route.fulfill({
       status: 500,
       contentType: "application/json",
       body: JSON.stringify({ error: "Internal Server Error" }),
     });
   });
-  await page.reload();
-  await expect(page.getByText("No Mail! You're all caught up!")).toBeVisible();
+  await page.waitForTimeout(2000);
+  await expect(page.getByText("No Mail! You are all caught up")).toBeVisible();
 });
 
 test("05. Check Compose component when the button is clicked", async ({
